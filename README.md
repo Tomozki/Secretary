@@ -6,7 +6,7 @@ A blazing fast, serverless Telegram bot running on Cloudflare Workers.
 
 You can deploy your own instance of Secretary to Cloudflare in minutes without touching a terminal.
 
-[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/YOUR_USERNAME/secretary)
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/tomozki/secretary)
 
 ### Setup Instructions
 
