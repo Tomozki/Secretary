@@ -5,4 +5,6 @@ workers_dev = true
 
 [vars]
 # Add any non-secret variables here (e.g., ENVIRONMENT = "production")
-# BOT_TOKEN is a secret and will be injected securely via GitHub Actions!
+TELEGRAM_TOKEN = "Bot tokens here"
+[[kv_namespaces]]
+binding = "SECRETARY_KV"
