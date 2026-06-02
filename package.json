@@ -1,5 +1,5 @@
 {
-  "name": "hecxloud-tg-bot",
+  "name": "secretary",
   "version": "1.0.0",
   "description": "A 1-click deployable Telegram bot on Cloudflare Workers",
   "main": "src/worker.js",
