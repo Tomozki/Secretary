@@ -7,4 +7,4 @@ workers_dev = true
 # Add any non-secret variables here (e.g., ENVIRONMENT = "production")
 TELEGRAM_TOKEN = "Bot tokens here"
 [[kv_namespaces]]
-binding = "SECRETARY_KV"
+binding = "MESSAGES_KV"
