@@ -1,0 +1,8 @@
+name = "hecxloud-tg-bot"
+main = "src/worker.js"
+compatibility_date = "2024-05-29"
+workers_dev = true
+
+[vars]
+# Add any non-secret variables here (e.g., ENVIRONMENT = "production")
+# BOT_TOKEN is a secret and will be injected securely via GitHub Actions!
