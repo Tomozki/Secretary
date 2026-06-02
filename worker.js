@@ -1,5 +1,27 @@
 export default {
   async fetch(request, env) {
+    // --- NEW PRE-FILL LOGIC ---
+    // If someone visits the Worker URL in a browser (GET request), run the setup
+    if (request.method === "GET") {
+      const isSetup = await env.MESSAGES_KV.get("setup_complete");
+      
+      if (!isSetup) {
+        // Pre-fill default keywords and replies
+        await env.MESSAGES_KV.put("hello", "Hello! Welcome to the bot. 👋");
+        await env.MESSAGES_KV.put("help", "I can answer predefined questions. My admin can add more!");
+        await env.MESSAGES_KV.put("ping", "pong! 🏓");
+        
+        // Set a flag so this only runs once
+        await env.MESSAGES_KV.put("setup_complete", "true");
+        
+        return new Response("✅ Setup Complete! KV Namespace created, bound, and pre-filled with default messages. You can now set this URL as your Telegram Webhook.", { status: 200 });
+      }
+      
+      return new Response("Bot is already initialized and running perfectly. 🚀", { status: 200 });
+    }
+    // ---------------------------
+
+    // Only allow POST requests from Telegram for normal operations
     if (request.method !== "POST") {
       return new Response("Method Not Allowed", { status: 405 });
     }
@@ -81,7 +103,14 @@ async function handleAdminCommands(chatId, text, env) {
 
     let responseList = "📋 *Current Pre-made Messages:*\n";
     for (const key of list.keys) {
-      responseList += `• ${key.name}\n`;
+      // Hide the setup variable from the admin's list view to keep it clean
+      if (key.name !== "setup_complete") {
+        responseList += `• ${key.name}\n`;
+      }
+    }
+    
+    if (responseList === "📋 *Current Pre-made Messages:*\n") {
+       responseList = "📂 No pre-made messages configured yet.";
     }
     
     await sendTelegram(chatId, responseList, env);
