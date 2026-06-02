@@ -8,3 +8,4 @@ workers_dev = true
 TELEGRAM_TOKEN = "Bot tokens here"
 [[kv_namespaces]]
 binding = "MESSAGES_KV"
+id = ""
